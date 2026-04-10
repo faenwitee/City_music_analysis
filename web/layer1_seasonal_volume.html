@@ -14,19 +14,19 @@ html,body{width:100%;height:100%;background:#08080d;color:#e8e4dc;font-family:'D
   grid-template-rows:auto auto 1fr;
   height:100vh;
   padding:28px 48px 24px;
-  max-width:1440px;
-  margin:0 auto;
+  max-width:none;
+  margin:0;
 }
 
 /* Header */
-.header{padding-bottom:14px}
+.header{padding-bottom:16px;text-align:left}
 .layer-tag{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(133,183,235,.7);margin-bottom:6px}
-.title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(18px,2vw,28px);line-height:1.05;letter-spacing:-.02em;color:#e8e4dc}
+.title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,32px);line-height:1.05;letter-spacing:-.02em;color:#e8e4dc;text-align:left;white-space:nowrap}
 .title span{color:#85b7eb}
-.subtitle{font-size:12px;color:rgba(232,228,220,.45);margin-top:4px;line-height:1.6}
+.subtitle{font-size:13px;color:rgba(232,228,220,.5);margin-top:5px;line-height:1.6}
 
 /* Controls row */
-.controls-row{display:flex;align-items:center;gap:16px;padding-bottom:16px;flex-wrap:nowrap}
+.controls-row{display:flex;align-items:center;gap:16px;padding-bottom:16px;flex-wrap:nowrap;width:100%}
 .ctrl-group{display:flex;flex-direction:column;gap:5px}
 .ctrl-label{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,228,220,.4)}
 .toggle-wrap{display:flex;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;overflow:hidden}
@@ -34,59 +34,59 @@ html,body{width:100%;height:100%;background:#08080d;color:#e8e4dc;font-family:'D
 .toggle-btn.active{background:rgba(133,183,235,.18);color:#85b7eb;font-weight:600}
 
 /* Stats pill */
-.stat-pill{margin-left:auto;padding:7px 14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:10px;display:flex;gap:20px}
-.stat-item{display:flex;flex-direction:column;gap:2px}
-.stat-lbl{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,228,220,.35)}
-.stat-val{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:#e8e4dc}
+.stat-pill{padding:16px 20px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;width:100%}
+.stat-item{display:flex;flex-direction:column;gap:4px;padding:0 16px;border-right:1px solid rgba(255,255,255,.07)}.stat-item:first-child{padding-left:0}.stat-item:last-child{border-right:none}
+.stat-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,228,220,.4);white-space:nowrap}
+.stat-val{font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:#e8e4dc;white-space:nowrap}
 .stat-val.blue{color:#85b7eb}
 
 /* Main: 2 columns */
-.main{display:grid;grid-template-columns:1fr 280px;gap:24px;min-height:0;align-items:start}
+.main{display:grid;grid-template-columns:minmax(0,600px) 1fr;gap:40px;min-height:0;align-items:start;margin-top:-52px}
 
 /* Heatmap side */
-.heatmap-side{display:flex;flex-direction:column;gap:0;min-height:0}
-.season-row{display:flex;margin-left:104px;margin-bottom:2px}
+.heatmap-side{display:flex;flex-direction:column;gap:0;min-height:0;padding-left:0;margin-top:80px}
+.season-row{display:flex;margin-left:86px;margin-bottom:2px}
 .season-block{font-size:9px;color:rgba(232,228,220,.22);letter-spacing:.08em;text-transform:uppercase;border-left:1px solid rgba(255,255,255,.08);padding-left:5px;white-space:nowrap;overflow:hidden}
-.month-row{display:flex;margin-left:104px;margin-bottom:4px}
-.month-lbl{font-size:10px;color:rgba(232,228,220,.32);text-align:center;flex:1}
-.heatmap-rows{display:flex;flex-direction:column;gap:2px}
+.month-row{display:flex;margin-left:86px;margin-bottom:4px}
+.month-lbl{font-size:11px;color:rgba(232,228,220,.35);text-align:center;flex:1}
+.heatmap-rows{display:flex;flex-direction:column;gap:4px}
 .hm-row{display:flex;align-items:center;gap:2px;cursor:pointer}
 .hm-row:hover .city-lbl{color:rgba(232,228,220,.85)}
 .hm-row.sel .city-lbl{color:#85b7eb;font-weight:600}
-.city-lbl{width:100px;font-size:10px;color:rgba(232,228,220,.45);text-align:right;padding-right:6px;flex-shrink:0;transition:color .2s;white-space:nowrap}
-.cell{flex:1;height:26px;border-radius:3px;cursor:pointer;transition:transform .15s;min-width:0}
+.city-lbl{width:82px;font-size:11px;color:rgba(232,228,220,.45);text-align:left;padding-right:0;padding-left:0;flex-shrink:0;transition:color .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cell{flex:1;height:40px;border-radius:4px;cursor:pointer;transition:transform .15s;min-width:0}
 .cell:hover{transform:scale(1.1);z-index:5;box-shadow:0 0 10px rgba(133,183,235,.35)}
 .cell.sel-cell{outline:2px solid rgba(133,183,235,.8);outline-offset:1px;z-index:2;position:relative}
 
 /* Legend - sits right under heatmap, left-aligned with cells */
-.legend-wrap{display:flex;align-items:center;gap:10px;margin-top:8px;margin-left:104px}
+.legend-wrap{display:flex;align-items:center;gap:10px;margin-top:8px;margin-left:86px}
 .legend-bar-el{flex:1;height:7px;border-radius:4px;background:linear-gradient(to right,#d6e8f7,#85b7eb,#1a4a7a)}
-.legend-lbl-row{display:flex;justify-content:space-between;margin-top:3px;margin-left:104px}
+.legend-lbl-row{display:flex;justify-content:space-between;margin-top:3px;margin-left:86px}
 .legend-lbl{font-size:9px;color:rgba(232,228,220,.3)}
 
 /* Right panel */
-.right-panel{display:flex;flex-direction:column;gap:12px}
+.right-panel{display:flex;flex-direction:column;gap:14px;height:fit-content;width:100%}
 
 /* Sort control */
-.sort-ctrl{padding:12px 14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px}
-select{appearance:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 28px 7px 10px;font-size:11px;font-family:'DM Sans',sans-serif;color:#e8e4dc;cursor:pointer;outline:none;transition:all .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(232,228,220,.4)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;width:100%}
+.sort-ctrl{padding:10px 14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px;width:100%}
+select{appearance:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 28px 9px 12px;font-size:12px;font-family:'DM Sans',sans-serif;color:#e8e4dc;cursor:pointer;outline:none;transition:all .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(232,228,220,.4)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;width:100%}
 select:hover{border-color:rgba(255,255,255,.22)}
 select option{background:#1a1a24}
 
 /* Bar panel */
-.bar-panel{padding:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px;flex:1}
-.bar-panel-title{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:rgba(232,228,220,.4);letter-spacing:.09em;text-transform:uppercase;margin-bottom:2px}
+.bar-panel{padding:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px;height:fit-content;overflow-y:auto;display:flex;flex-direction:column;width:100%}
+.bar-panel-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(232,228,220,.4);letter-spacing:.09em;text-transform:uppercase;margin-bottom:3px}
 .bar-subtitle{font-size:10px;color:rgba(232,228,220,.25);margin-bottom:10px}
-.bar-rows{display:flex;flex-direction:column;gap:5px}
-.bar-row{display:flex;align-items:center;gap:7px;cursor:pointer}
+.bar-rows{display:flex;flex-direction:column;gap:9px}
+.bar-row{display:flex;align-items:center;gap:7px;cursor:pointer;width:100%}
 .bar-row:hover .bar-city{color:rgba(232,228,220,.8)}
-.bar-city{font-size:10px;color:rgba(232,228,220,.45);width:82px;text-align:right;flex-shrink:0;transition:color .2s;white-space:nowrap}
+.bar-city{font-size:11px;color:rgba(232,228,220,.45);width:100px;text-align:right;flex-shrink:0;transition:color .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar-row.sel .bar-city{color:#85b7eb;font-weight:600}
-.bar-track{flex:1;height:16px;background:rgba(255,255,255,.04);border-radius:3px;overflow:visible;position:relative}
+.bar-track{flex:1;min-width:0;height:24px;background:rgba(255,255,255,.04);border-radius:3px;overflow:visible;position:relative}
 .bar-fill{height:100%;border-radius:3px;transition:width .7s cubic-bezier(.16,1,.3,1);background:linear-gradient(to right,#2a6496,#85b7eb)}
 .bar-row.sel .bar-fill{background:linear-gradient(to right,#3a80c0,#b3d7f5)}
-.bar-val{font-size:10px;color:rgba(232,228,220,.4);flex-shrink:0;font-variant-numeric:tabular-nums;min-width:36px}
-.bar-diff{font-size:9px;color:rgba(232,228,220,.25);flex-shrink:0}
+.bar-val{font-size:11px;color:rgba(232,228,220,.4);flex-shrink:0;font-variant-numeric:tabular-nums;width:44px;text-align:right}
+.bar-diff{font-size:10px;color:rgba(232,228,220,.25);flex-shrink:0;width:48px;text-align:left}
 .ref-line{position:absolute;top:-2px;bottom:-2px;width:1.5px;background:rgba(133,183,235,.55);pointer-events:none}
 
 #tooltip{position:fixed;pointer-events:none;z-index:100;background:rgba(14,14,22,.97);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:7px 12px;font-size:11px;color:rgba(232,228,220,.85);opacity:0;transition:opacity .15s;white-space:nowrap;backdrop-filter:blur(12px)}
@@ -111,12 +111,14 @@ select option{background:#1a1a24}
         <button class="toggle-btn" id="btnPop" onclick="setMode('per100k')">Per 100k Population</button>
       </div>
     </div>
-    <div class="stat-pill">
-      <div class="stat-item"><div class="stat-lbl">Selected city</div><div class="stat-val blue" id="statCity">—</div></div>
-      <div class="stat-item"><div class="stat-lbl">Selected month</div><div class="stat-val" id="statMonth">—</div></div>
-      <div class="stat-item"><div class="stat-lbl">Events</div><div class="stat-val" id="statEvents">—</div></div>
-      <div class="stat-item"><div class="stat-lbl">% of annual</div><div class="stat-val" id="statPct">—</div></div>
+    <div class="ctrl-group" style="min-width:180px;margin-left:40px">
+      <div class="ctrl-label">Legend: monthly event count</div>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <div style="width:220px;height:7px;border-radius:4px;background:linear-gradient(to right,#d6e8f7,#85b7eb,#1a4a7a)"></div>
+        <div style="width:220px;display:flex;justify-content:space-between;font-size:9px;color:rgba(232,228,220,.3)"><span>Low</span><span>High</span></div>
+      </div>
     </div>
+
   </div>
 
   <div class="main">
@@ -126,18 +128,17 @@ select option{background:#1a1a24}
       <div class="season-row" id="seasonRow"></div>
       <div class="month-row" id="monthRow"></div>
       <div class="heatmap-rows" id="hmRows"></div>
-      <div class="legend-wrap">
-        <div class="legend-bar-el"></div>
-      </div>
-      <div class="legend-lbl-row">
-        <span class="legend-lbl">0</span>
-        <span class="legend-lbl">Legend: Monthly Event Count</span>
-        <span class="legend-lbl">Max</span>
-      </div>
+
     </div>
 
     <!-- RIGHT: sort + bar chart -->
     <div class="right-panel">
+      <div class="stat-pill">
+        <div class="stat-item"><div class="stat-lbl">Selected city</div><div class="stat-val blue" id="statCity">—</div></div>
+        <div class="stat-item"><div class="stat-lbl">Selected month</div><div class="stat-val" id="statMonth">—</div></div>
+        <div class="stat-item"><div class="stat-lbl">Total Events</div><div class="stat-val" id="statEvents">—</div></div>
+        <div class="stat-item"><div class="stat-lbl">% of annual</div><div class="stat-val" id="statPct">—</div></div>
+      </div>
       <div class="sort-ctrl">
         <div class="ctrl-label" style="margin-bottom:6px">Sort bar chart by</div>
         <select id="sortSel" onchange="renderBars()">
